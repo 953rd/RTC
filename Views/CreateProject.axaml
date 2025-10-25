@@ -116,7 +116,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <!-- Footer -->
+        <!-- Foote r -->
         <Border Grid.Row="2" Background="#E3E8EC" Padding="15">
             <TextBlock Text="RTC - Коммерческое подразделение © 2024" 
                       HorizontalAlignment="Center" 
