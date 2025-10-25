@@ -2,6 +2,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RTC.App">
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme/>
+
+         <!-- Кастомные стили для переопределения FluentTheme -->
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E3E8EC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="Foreground" Value="#333333"/>
+        </Style>
+        
+        <Style Selector="TextBox:focus /template/ Border#border">
+            <Setter Property="BorderBrush" Value="#7700FF"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+        
+        <Style Selector="Button">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
     </Application.Styles>
 </Application>

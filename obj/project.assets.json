@@ -1918,24 +1918,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\Masha\\.nuget\\packages\\": {},
+    "E:\\VSTOOLS\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\RTC\\RTC.csproj",
+      "projectUniqueName": "C:\\Users\\Masha\\Documents\\GitHub\\RTC\\RTC.csproj",
       "projectName": "RTC",
-      "projectPath": "C:\\Users\\Admin\\RTC\\RTC.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\RTC\\obj\\",
+      "projectPath": "C:\\Users\\Masha\\Documents\\GitHub\\RTC\\RTC.csproj",
+      "packagesPath": "C:\\Users\\Masha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Masha\\Documents\\GitHub\\RTC\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "E:\\VSTOOLS\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Masha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
