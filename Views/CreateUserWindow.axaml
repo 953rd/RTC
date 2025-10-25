@@ -1,0 +1,242 @@
+<Window x:Class="RTC.Views.CreateUserWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RTC - Создание пользователя"
+        Width="800" Height="700"
+        Background="#f8f9fa">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Header -->
+        <Border Grid.Row="0" Padding="20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#7700FF" Offset="0"/>
+                    <GradientStop Color="#E8D2ED" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid ColumnDefinitions="*,Auto,Auto" VerticalAlignment="Center">
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock Text="👤 Создание пользователя" 
+                              Foreground="#7700FF" 
+                              FontSize="24" 
+                              FontWeight="Bold"/>
+                    <TextBlock Text="Rostelecom Business - Административная панель" 
+                              Foreground="#666666" 
+                              FontSize="14" 
+                              HorizontalAlignment="Center"
+                              Margin="0,6,0,0"/>
+                </StackPanel>
+                
+                <!-- Кнопки управления -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10">
+                    <Button Content="← Назад" 
+                            Background="#749FD6" 
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            FontSize="12"
+                            Padding="14,8"
+                            CornerRadius="6"
+                            Click="BackButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <ScrollViewer Grid.Row="1" Padding="20" VerticalScrollBarVisibility="Auto">
+            <StackPanel Spacing="20">
+                <Border Background="White" 
+                        CornerRadius="16" 
+                        Padding="40"
+                        BorderThickness="1"
+                        BorderBrush="#E8D2ED">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+                          RowSpacing="20"
+                          ColumnDefinitions="Auto,*">
+                        
+                        <!-- Фамилия -->
+                        <TextBlock Grid.Row="0" Grid.Column="0"
+                                  Text="Фамилия *"
+                                  Foreground="#333333"
+                                  FontSize="14"
+                                  FontWeight="SemiBold"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,20,0"/>
+                        <TextBox Grid.Row="0" Grid.Column="1"
+                                Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#7700FF"
+                                CornerRadius="6"
+                                Padding="12"
+                                FontSize="13"/>
+                        
+                        <!-- Имя -->
+                        <TextBlock Grid.Row="1" Grid.Column="0"
+                                  Text="Имя *"
+                                  Foreground="#333333"
+                                  FontSize="14"
+                                  FontWeight="SemiBold"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,20,0"/>
+                        <TextBox Grid.Row="1" Grid.Column="1"
+                                Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#7700FF"
+                                CornerRadius="6"
+                                Padding="12"
+                                FontSize="13"/>
+                        
+                        <!-- Отчество -->
+                        <TextBlock Grid.Row="2" Grid.Column="0"
+                                  Text="Отчество"
+                                  Foreground="#333333"
+                                  FontSize="14"
+                                  FontWeight="SemiBold"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,20,0"/>
+                        <TextBox Grid.Row="2" Grid.Column="1"
+                                Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#7700FF"
+                                CornerRadius="6"
+                                Padding="12"
+                                FontSize="13"/>
+                        
+                        <!-- Email -->
+                        <TextBlock Grid.Row="3" Grid.Column="0"
+                                  Text="Email *"
+                                  Foreground="#333333"
+                                  FontSize="14"
+                                  FontWeight="SemiBold"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,20,0"/>
+                        <TextBox Grid.Row="3" Grid.Column="1"
+                                Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#7700FF"
+                                CornerRadius="6"
+                                Padding="12"
+                                FontSize="13"/>
+                        
+                        <!-- Пароль -->
+                        <TextBlock Grid.Row="4" Grid.Column="0"
+                                  Text="Пароль *"
+                                  Foreground="#333333"
+                                  FontSize="14"
+                                  FontWeight="SemiBold"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,20,0"/>
+                        <TextBox Grid.Row="4" Grid.Column="1"
+                                Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#7700FF"
+                                CornerRadius="6"
+                                Padding="12"
+                                FontSize="13"
+                                PasswordChar="•"/>
+                        
+                        <!-- Подтверждение пароля -->
+                        <TextBlock Grid.Row="5" Grid.Column="0"
+                                  Text="Подтверждение пароля *"
+                                  Foreground="#333333"
+                                  FontSize="14"
+                                  FontWeight="SemiBold"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,20,0"/>
+                        <TextBox Grid.Row="5" Grid.Column="1"
+                                Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#7700FF"
+                                CornerRadius="6"
+                                Padding="12"
+                                FontSize="13"
+                                PasswordChar="•"/>
+                        
+                        <!-- Роль -->
+                        <TextBlock Grid.Row="6" Grid.Column="0"
+                                  Text="Роль *"
+                                  Foreground="#333333"
+                                  FontSize="14"
+                                  FontWeight="SemiBold"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,20,0"/>
+                        <ComboBox Grid.Row="6" Grid.Column="1"
+                                 BorderThickness="1"
+                                 BorderBrush="#E8D2ED"
+                                 CornerRadius="6"
+                                 Padding="12"
+                                 FontSize="13"
+                                 Background="White">
+                            <ComboBoxItem Content="👤 Пользователь"/>
+                            <ComboBoxItem Content="⚙️ Менеджер"/>
+                            <ComboBoxItem Content="🔧 Администратор"/>
+                            <ComboBoxItem Content="📊 Аналитик"/>
+                        </ComboBox>
+                        
+                        <!-- Кнопки -->
+                        <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                                   Orientation="Horizontal" 
+                                   HorizontalAlignment="Center"
+                                   Spacing="20"
+                                   Margin="0,30,0,0">
+                            <Button Content="Отмена" 
+                                    Background="#749FD6" 
+                                    Foreground="White"
+                                    FontWeight="SemiBold"
+                                    FontSize="13"
+                                    Padding="25,12"
+                                    CornerRadius="6"
+                                    Width="140"
+                                    Click="CancelButton_Click"/>
+                            <Button Content="Создать пользователя" 
+                                    Background="#7700FF" 
+                                    Foreground="White"
+                                    FontWeight="SemiBold"
+                                    FontSize="13"
+                                    Padding="25,12"
+                                    CornerRadius="6"
+                                    Width="180"
+                                    Click="CreateUserButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Footer -->
+        <Border Grid.Row="2" Background="#ecf0f1" Padding="10">
+            <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FFFFFF" Offset="0"/>
+                        <GradientStop Color="#F8F0FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                    <Image Source="/Assets/rostelecom-logo-eng.png" 
+       Width="120" 
+       Height="30" 
+       Stretch="Uniform"/>
+                    <TextBlock Text="Business - Анализатор проектов"
+                            Padding="0,15,0,0" 
+                              Foreground="#7700FF"
+                              FontSize="12"
+                              FontWeight="SemiBold"/>
+                    <TextBlock Text="•" 
+                    Padding="0,15,0,0" 
+                              Foreground="#E8D2ED"
+                              FontSize="12"
+                              Margin="5,0"/>
+                    <TextBlock Text="Коммерческое подразделение"
+                    Padding="0,15,0,0"   
+                              Foreground="#666666"
+                              FontSize="11"/>
+                </StackPanel>
+        </Border>
+    </Grid>
+</Window>

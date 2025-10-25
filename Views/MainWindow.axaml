@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
         Title="RTC - Анализатор коммерческих проектов"
+        WindowState="Maximized"
+        CanResize="True"
         Width="1200" Height="800"
         Background="#f8f9fa">
 
@@ -96,7 +98,7 @@
                                  Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-
+                
                 <!-- Активные проекты -->
                 <Border Grid.Column="1" 
                         Background="White" 
@@ -165,7 +167,7 @@
                     </StackPanel>
                 </Border>
             </Grid>
-
+            
             <!-- Вторая строка метрик -->
             <Grid ColumnDefinitions="1*,1*,1*" ColumnSpacing="15">
                 <!-- В работе -->
@@ -200,7 +202,7 @@
                                  Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-
+                
                 <!-- Бюджет -->
                 <Border Grid.Column="1" 
                         Background="White" 

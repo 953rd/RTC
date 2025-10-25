@@ -4,13 +4,13 @@ namespace RTC.Models
 {
     public class FormItem : ReactiveObject
     {
-        private string _name;
+        private string? _name; // сделать nullable
         private int _value;
 
-        public string Name
+        public string? Name // сделать nullable
         {
             get => _name;
-            set => this.RaiseAndSetIfChanged(ref _name, value);
+            set => _name = value;
         }
 
         public int Value

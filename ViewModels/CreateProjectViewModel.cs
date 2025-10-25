@@ -8,9 +8,9 @@ namespace RTC.ViewModels
     public class CreateProjectViewModel : ViewModelBase
     {
         private ObservableCollection<FormItem> _yourItems;
-        private string _projectName;
-        private string _projectDescription;
-        private FormItem _selectedMonth;
+        private string? _projectName; // сделать nullable
+        private string? _projectDescription; // сделать nullable
+        private string? _selectedMonth;
 
         public CreateProjectViewModel()
         {
@@ -24,22 +24,22 @@ namespace RTC.ViewModels
             set => this.RaiseAndSetIfChanged(ref _yourItems, value);
         }
 
-        public string ProjectName
+        public string? ProjectName // сделать nullable
         {
             get => _projectName;
-            set => this.RaiseAndSetIfChanged(ref _projectName, value);
+            set => _projectName = value;
         }
 
-        public string ProjectDescription
+         public string? ProjectDescription // сделать nullable
         {
             get => _projectDescription;
-            set => this.RaiseAndSetIfChanged(ref _projectDescription, value);
+            set => _projectDescription = value;
         }
 
-        public FormItem SelectedMonth
+        public string? SelectedMonth // сделать nullable
         {
             get => _selectedMonth;
-            set => this.RaiseAndSetIfChanged(ref _selectedMonth, value);
+            set => _selectedMonth = value;
         }
     }
 }

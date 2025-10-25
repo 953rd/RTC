@@ -9,6 +9,15 @@
     <UseAppHost>true</UseAppHost>
   </PropertyGroup>
 
+<ItemGroup>
+      <!--
+  <AvaloniaResource Include="Assets\**" />
+  <AvaloniaResource Include="Views\MainWindow.axaml" />
+  <AvaloniaResource Include="Views\CreateProject.axaml" />
+  <AvaloniaResource Include="Views\CreateUserWindow.axaml" />
+  -->
+  </ItemGroup>
+
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
     <PackageReference Include="Avalonia" Version="11.3.8" />

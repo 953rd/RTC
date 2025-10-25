@@ -1,13 +1,6 @@
-System.ArgumentException: Unable to load bitmap from provided data
-   at Avalonia.Skia.ImmutableBitmap..ctor(Stream stream)
-   at Avalonia.Skia.PlatformRenderInterface.LoadBitmap(Stream stream)
-   at Avalonia.Media.Imaging.Bitmap..ctor(Stream stream)
-   at Avalonia.Markup.Xaml.Converters.BitmapTypeConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
-   at RTC.Views.MainWindow.!XamlIlPopulate(IServiceProvider, MainWindow) in C:\Users\Admin\RTC\Views/MainWindow.axaml:line 337
-   at RTC.Views.MainWindow.!XamlIlPopulateTrampoline(MainWindow)
-   at RTC.Views.MainWindow.InitializeComponent(Boolean loadXaml, Boolean attachDevTools) in C:\Users\Admin\RTC\obj\Debug\net9.0\Avalonia.Generators\Avalonia.Generators.NameGenerator.AvaloniaNameSourceGenerator\RTC.Views.MainWindow.g.cs:line 25
-   at RTC.Views.MainWindow..ctor() in C:\Users\Admin\RTC\Views\MainWindow.axaml.cs:line 12
-   at RTC.App.OnFrameworkInitializationCompleted() in C:\Users\Admin\RTC\App.axaml.cs:line 34
+Avalonia.Markup.Xaml.XamlLoadException: No precompiled XAML found for RTC.App, make sure to specify x:Class and include your XAML file as AvaloniaResource
+   at Avalonia.Markup.Xaml.AvaloniaXamlLoader.Load(Object obj)
+   at RTC.App.Initialize() in C:\Users\Admin\RTC\App.axaml.cs:line 16
    at Avalonia.AppBuilder.SetupUnsafe()
    at Avalonia.AppBuilder.Setup()
    at Avalonia.AppBuilder.SetupWithLifetime(IApplicationLifetime lifetime)

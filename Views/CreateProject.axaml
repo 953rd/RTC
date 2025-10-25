@@ -1,7 +1,9 @@
-<Window x:Class="RTC.Views.CreateProject"
+<UserControl x:Class="RTC.Views.CreateProject"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="RTC - Создание проекта"
+        WindowState="Maximized"
+        CanResize="True"
         Width="1200" Height="800"
         Background="#f8f9fa">
 
@@ -253,4 +255,4 @@
                 </StackPanel>
         </Border>
     </Grid>
-</Window>
+</UserControl>

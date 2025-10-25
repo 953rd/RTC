@@ -21,49 +21,35 @@ namespace RTC.Views
         }
 
         private void CreateAccountButton_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO: Реализовать открытие окна создания аккаунта
-            // var createAccountWindow = new CreateAccount();
-            // createAccountWindow.Show();
-            
-            // Временно показываем сообщение
-            var dialog = new Window()
-            {
-                Title = "Создание аккаунта",
-                Width = 400,
-                Height = 200,
-                Content = new TextBlock 
-                { 
-                    Text = "Функция создания аккаунта будет реализована в будущем", 
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
-                    VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
-                }
-            };
-            dialog.ShowDialog(this);
-        }
+{
+    var createUserWindow = new CreateUserWindow();
+    createUserWindow.Show();
+    this.Close();
+}
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Реализовать логику выхода из аккаунта
             // Очистка данных сессии, возврат на окно входа и т.д.
-            
+
             // Временно показываем сообщение
             var dialog = new Window()
-            {
+        {
                 Title = "Выход из системы",
                 Width = 400,
                 Height = 200,
-                Content = new TextBlock 
-                { 
-                    Text = "Вы успешно вышли из системы", 
+                Content = new TextBlock
+                {
+                    Text = "Вы успешно вышли из системы",
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
                 }
             };
             dialog.ShowDialog(this);
-            
+
             // Закрываем приложение (временное решение)
             // Environment.Exit(0);
         }
+        
     }
 }
