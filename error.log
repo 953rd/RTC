@@ -1,8 +1,0 @@
-Avalonia.Markup.Xaml.XamlLoadException: No precompiled XAML found for RTC.App, make sure to specify x:Class and include your XAML file as AvaloniaResource
-   at Avalonia.Markup.Xaml.AvaloniaXamlLoader.Load(Object obj)
-   at RTC.App.Initialize() in C:\Users\Admin\RTC\App.axaml.cs:line 16
-   at Avalonia.AppBuilder.SetupUnsafe()
-   at Avalonia.AppBuilder.Setup()
-   at Avalonia.AppBuilder.SetupWithLifetime(IApplicationLifetime lifetime)
-   at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
-   at RTC.Program.Main(String[] args) in C:\Users\Admin\RTC\Program.cs:line 16
