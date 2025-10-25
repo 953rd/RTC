@@ -64,13 +64,13 @@
               "target": "Package",
               "version": "[11.3.8, )"
             },
+            "Avalonia.Svg.Skia": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.3.8, )"
-            },
-            "ReactiveUI": {
-              "target": "Package",
-              "version": "[22.2.1, )"
             }
           },
           "imports": [

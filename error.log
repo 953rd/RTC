@@ -1,0 +1,15 @@
+System.ArgumentException: Unable to load bitmap from provided data
+   at Avalonia.Skia.ImmutableBitmap..ctor(Stream stream)
+   at Avalonia.Skia.PlatformRenderInterface.LoadBitmap(Stream stream)
+   at Avalonia.Media.Imaging.Bitmap..ctor(Stream stream)
+   at Avalonia.Markup.Xaml.Converters.BitmapTypeConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at RTC.Views.MainWindow.!XamlIlPopulate(IServiceProvider, MainWindow) in C:\Users\Admin\RTC\Views/MainWindow.axaml:line 337
+   at RTC.Views.MainWindow.!XamlIlPopulateTrampoline(MainWindow)
+   at RTC.Views.MainWindow.InitializeComponent(Boolean loadXaml, Boolean attachDevTools) in C:\Users\Admin\RTC\obj\Debug\net9.0\Avalonia.Generators\Avalonia.Generators.NameGenerator.AvaloniaNameSourceGenerator\RTC.Views.MainWindow.g.cs:line 25
+   at RTC.Views.MainWindow..ctor() in C:\Users\Admin\RTC\Views\MainWindow.axaml.cs:line 12
+   at RTC.App.OnFrameworkInitializationCompleted() in C:\Users\Admin\RTC\App.axaml.cs:line 34
+   at Avalonia.AppBuilder.SetupUnsafe()
+   at Avalonia.AppBuilder.Setup()
+   at Avalonia.AppBuilder.SetupWithLifetime(IApplicationLifetime lifetime)
+   at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+   at RTC.Program.Main(String[] args) in C:\Users\Admin\RTC\Program.cs:line 16

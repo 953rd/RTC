@@ -1,21 +1,33 @@
 ﻿using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
 using System;
+using System.IO; // Добавьте эту строку
 
-namespace RTC;
-
-class Program
+namespace RTC
 {
-    // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
-    [STAThread]
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithClassicDesktopLifetime(args);
+    internal class Program
+    {
+        [STAThread]
+        public static void Main(string[] args)
+        {
+            try
+            {
+                Console.WriteLine("Запуск приложения...");
+                BuildAvaloniaApp()
+                    .StartWithClassicDesktopLifetime(args);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Критическая ошибка: {ex}");
+                // Запись в файл лога или показ сообщения
+                File.WriteAllText("error.log", ex.ToString());
+            }
+        }
 
-    // Avalonia configuration, don't remove; also used by visual designer.
-    public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
-            .UsePlatformDetect()
-            .WithInterFont()
-            .LogToTrace();
+        public static AppBuilder BuildAvaloniaApp()
+            => AppBuilder.Configure<App>()
+                .UsePlatformDetect()
+                .LogToTrace()
+                .WithInterFont();
+    }
 }

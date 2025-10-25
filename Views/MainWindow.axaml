@@ -1,118 +1,357 @@
 <Window x:Class="RTC.Views.MainWindow"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:RTC.ViewModels"
-        xmlns:models="using:RTC.Models"
+        xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
         Title="RTC - Анализатор коммерческих проектов"
         Width="1200" Height="800"
-        x:DataType="vm:MainWindowViewModel">
+        Background="#f8f9fa">
 
-    <Design.DataContext>
-        <vm:MainWindowViewModel />
-    </Design.DataContext>
+    <ScrollViewer Padding="20" VerticalScrollBarVisibility="Auto">
+        <StackPanel Spacing="20">
+            <!-- Заголовок с кнопками -->
+            <Border CornerRadius="12" Padding="20">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#7700FF" Offset="0"/>
+                        <GradientStop Color="#E8D2ED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid ColumnDefinitions="*,Auto,Auto" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                        <TextBlock Text="📊 Анализатор коммерческих проектов" 
+                                  Foreground="#7700FF" 
+                                  FontSize="24" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="Rostelecom Business - Панель управления проектами" 
+                                  Foreground="#666666" 
+                                  FontSize="14" 
+                                  HorizontalAlignment="Center"
+                                  Margin="0,6,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- Кнопки управления -->
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right">
+                        <Button Content="➕ Создать проект" 
+                                Background="#749FD6" 
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                FontSize="12"
+                                Padding="14,8"
+                                CornerRadius="6"
+                                Click="CreateProjectButton_Click"/>
+                        <Button Content="👤 Создать аккаунт" 
+                                Background="#ea6629ff" 
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                FontSize="12"
+                                Padding="14,8"
+                                CornerRadius="6"
+                                Click="CreateAccountButton_Click"/>
+                    </StackPanel>
+                    
+                    <Button Grid.Column="2" 
+                            Content="🚪 Выйти" 
+                            Background="#7700FF" 
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            FontSize="12"
+                            Padding="14,8"
+                            CornerRadius="6"
+                            Margin="10,0,0,0"
+                            Click="LogoutButton_Click"/>
+                </Grid>
+            </Border>
 
-    <ScrollViewer Padding="5" VerticalScrollBarVisibility="Auto">
-        <StackPanel Spacing="10">
-            <!-- Первая строка с 3 квадратами -->
-            <Grid ColumnDefinitions="Auto,Auto,Auto" HorizontalAlignment="Center">
-                <Border Background="#ead3ff" 
-                       CornerRadius="25" 
-                       Padding="15" 
-                       Width="280" 
-                       Height="280"
-                       Margin="0,0,5,0">
+            <!-- Основные метрики -->
+            <Grid ColumnDefinitions="1*,1*,1*" ColumnSpacing="15">
+                <!-- Всего проектов -->
+                <Border Background="White" 
+                        CornerRadius="10" 
+                        Padding="20"
+                        BorderThickness="1"
+                        BorderBrush="#E8D2ED">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <StackPanel>
-                        <TextBlock Text="Всего проектов" Foreground="White" FontSize="18"/>
-                        <TextBlock Text="{Binding CurrentMetrics.TotalProjects}" 
-                                  Foreground="White" FontSize="26" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+                            <Border Background="#7700FF" CornerRadius="6" Padding="6">
+                                <TextBlock Text="📋" FontSize="14" Foreground="White"/>
+                            </Border>
+                            <TextBlock Text="Всего проектов" 
+                                      Foreground="#333333"
+                                      FontSize="13"
+                                      FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="0" 
+                                  Foreground="#7700FF" 
+                                  FontSize="28" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="за все время" 
+                                 Foreground="#666666" 
+                                 FontSize="11" 
+                                 Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                
+
+                <!-- Активные проекты -->
                 <Border Grid.Column="1" 
-                       Background="#ead3ff" 
-                       CornerRadius="25" 
-                       Padding="15" 
-                       Width="280" 
-                       Height="280"
-                       Margin="5,0,5,0">
+                        Background="White" 
+                        CornerRadius="10" 
+                        Padding="20"
+                        BorderThickness="1"
+                        BorderBrush="#E8D2ED">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <StackPanel>
-                        <TextBlock Text="Активные проекты" Foreground="White" FontSize="18"/>
-                        <TextBlock Text="{Binding CurrentMetrics.ActiveProjects}" 
-                                  Foreground="White" FontSize="26" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+                            <Border Background="#749FD6" CornerRadius="6" Padding="6">
+                                <TextBlock Text="🚀" FontSize="14" Foreground="White"/>
+                            </Border>
+                            <TextBlock Text="Активные проекты" 
+                                      Foreground="#333333"
+                                      FontSize="13"
+                                      FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="0" 
+                                  Foreground="#749FD6" 
+                                  FontSize="28" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="в работе сейчас" 
+                                 Foreground="#666666" 
+                                 FontSize="11" 
+                                 Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                
+
+                <!-- Завершено -->
                 <Border Grid.Column="2" 
-                       Background="#ead3ff" 
-                       CornerRadius="25" 
-                       Padding="15" 
-                       Width="280" 
-                       Height="280"
-                       Margin="5,0,0,0">
+                        Background="White" 
+                        CornerRadius="10" 
+                        Padding="20"
+                        BorderThickness="1"
+                        BorderBrush="#E8D2ED">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <StackPanel>
-                        <TextBlock Text="Завершено" Foreground="White" FontSize="18"/>
-                        <TextBlock Text="{Binding CurrentMetrics.CompletedProjects}" 
-                                  Foreground="White" FontSize="26" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+                           <Border Background="#00a650" CornerRadius="6" Padding="6">
+                                <TextBlock Text="✅" FontSize="14" Foreground="White"/>
+                            </Border>
+                            <TextBlock Text="Завершено" 
+                                      Foreground="#333333"
+                                      FontSize="13"
+                                      FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="0" 
+                                  Foreground="#7700FF" 
+                                  FontSize="28" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="успешно закрыто" 
+                                 Foreground="#666666" 
+                                 FontSize="11" 
+                                 Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
             </Grid>
-            
-            <!-- Вторая строка с 3 квадратами -->
-            <Grid ColumnDefinitions="Auto,Auto,Auto" HorizontalAlignment="Center">
-                <Border Background="#ead3ff" 
-                       CornerRadius="25" 
-                       Padding="15" 
-                       Width="280" 
-                       Height="280"
-                       Margin="0,0,5,0">
+
+            <!-- Вторая строка метрик -->
+            <Grid ColumnDefinitions="1*,1*,1*" ColumnSpacing="15">
+                <!-- В работе -->
+                <Border Background="White" 
+                        CornerRadius="10" 
+                        Padding="20"
+                        BorderThickness="1"
+                        BorderBrush="#E8D2ED">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <StackPanel>
-                        <TextBlock Text="В работе" Foreground="White" FontSize="18"/>
-                        <TextBlock Text="{Binding CurrentMetrics.InProgressProjects}" 
-                                  Foreground="White" FontSize="26" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+                            <Border Background="#749FD6" CornerRadius="6" Padding="6">
+                                <TextBlock Text="⚡" FontSize="14" Foreground="White"/>
+                            </Border>
+                            <TextBlock Text="В работе" 
+                                      Foreground="#333333"
+                                      FontSize="13"
+                                      FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="0" 
+                                  Foreground="#749FD6" 
+                                  FontSize="28" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="активная разработка" 
+                                 Foreground="#666666" 
+                                 FontSize="11" 
+                                 Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                
+
+                <!-- Бюджет -->
                 <Border Grid.Column="1" 
-                       Background="#ead3ff" 
-                       CornerRadius="25" 
-                       Padding="15" 
-                       Width="280" 
-                       Height="280"
-                       Margin="5,0,5,0">
+                        Background="White" 
+                        CornerRadius="10" 
+                        Padding="20"
+                        BorderThickness="1"
+                        BorderBrush="#E8D2ED">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <StackPanel>
-                        <TextBlock Text="Бюджет" Foreground="White" FontSize="18"/>
-                        <TextBlock Text="{Binding CurrentMetrics.TotalBudget}" 
-                                  Foreground="White" FontSize="26" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+                            <Border Background="#7700FF" CornerRadius="6" Padding="6">
+                                <TextBlock Text="💰" FontSize="14" Foreground="White"/>
+                            </Border>
+                            <TextBlock Text="Общий бюджет" 
+                                      Foreground="#333333"
+                                      FontSize="13"
+                                      FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="0 ₽" 
+                                  Foreground="#7700FF" 
+                                  FontSize="28" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="суммарный бюджет" 
+                                 Foreground="#666666" 
+                                 FontSize="11" 
+                                 Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                
+
+                <!-- Прибыль -->
                 <Border Grid.Column="2" 
-                       Background="#ead3ff" 
-                       CornerRadius="25" 
-                       Padding="15" 
-                       Width="280" 
-                       Height="280"
-                       Margin="5,0,0,0">
+                        Background="White" 
+                        CornerRadius="10" 
+                        Padding="20"
+                        BorderThickness="1"
+                        BorderBrush="#E8D2ED">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <StackPanel>
-                        <TextBlock Text="Прибыль" Foreground="White" FontSize="18"/>
-                        <TextBlock Text="{Binding CurrentMetrics.TotalProfit}" 
-                                  Foreground="White" FontSize="26" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+                            <Border Background="#ea6629ff" CornerRadius="6" Padding="6">
+                                <TextBlock Text="📈" FontSize="14" Foreground="White"/>
+                            </Border>
+                            <TextBlock Text="Прибыль" 
+                                      Foreground="#333333"
+                                      FontSize="13"
+                                      FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="0 ₽" 
+                                  Foreground="#ea6629ff" 
+                                  FontSize="28" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="чистая прибыль" 
+                                 Foreground="#666666" 
+                                 FontSize="11" 
+                                 Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
             </Grid>
 
-            <!-- Прямоугольник на всю ширину -->
-            <Border Background="#ead3ff" 
-                   CornerRadius="25" 
-                   Padding="20" 
-                   Height="120"
-                   Margin="5"
-                   Width="870"
-                   HorizontalAlignment="Stretch">
-                <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Рентабельность" Foreground="White" FontSize="20"/>
-                    <TextBlock Text="{Binding CurrentMetrics.Profitability}" 
-                              Foreground="White" FontSize="28" FontWeight="Bold"/>
+            <!-- Основная метрика - Рентабельность -->
+            <Border CornerRadius="10" Padding="25">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#7700FF" Offset="0"/>
+                        <GradientStop Color="#E8D2ED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid ColumnDefinitions="*,Auto,*">
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                        <TextBlock Text="📊 Рентабельность проектов"
+                                  Foreground="#ea6629ff"
+                                  FontSize="16"
+                                  FontWeight="SemiBold"
+                                  HorizontalAlignment="Center"/>
+                        <TextBlock Text="0%"
+                                  Foreground="#ea6629ff"
+                                  FontSize="32"
+                                  FontWeight="Bold"
+                                  HorizontalAlignment="Center"
+                                  Margin="0,6,0,0"/>
+                        <TextBlock Text="средняя рентабельность по портфелю" 
+                                 Foreground="#666666" 
+                                 FontSize="12" 
+                                 HorizontalAlignment="Center"
+                                 Margin="0,6,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- Индикатор -->
+                    <Border Grid.Column="2" 
+                           Background="rgba(119, 0, 255, 0.1)" 
+                           CornerRadius="8" 
+                           Padding="12,8"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Margin="0,0,15,0">
+                        <StackPanel>
+                            <TextBlock Text="Эффективность" 
+                                      Foreground="#7700FF" 
+                                      FontSize="11" 
+                                      FontWeight="SemiBold"/>
+                            <TextBlock Text="Rostelecom Business" 
+                                      Foreground="#749FD6" 
+                                      FontSize="12" 
+                                      FontWeight="Bold"
+                                      Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Футер -->
+            <Border Background="White"
+                    CornerRadius="8"
+                    Padding="12"
+                    BorderThickness="1"
+                    BorderBrush="#E8D2ED">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FFFFFF" Offset="0"/>
+                        <GradientStop Color="#F8F0FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                    <Image Source="/Assets/rostelecom-logo-eng.png" 
+       Width="120" 
+       Height="30" 
+       Stretch="Uniform"/>
+                    <TextBlock Text="Business - Анализатор проектов"
+                            Padding="0,15,0,0" 
+                              Foreground="#7700FF"
+                              FontSize="12"
+                              FontWeight="SemiBold"/>
+                    <TextBlock Text="•" 
+                    Padding="0,15,0,0" 
+                              Foreground="#E8D2ED"
+                              FontSize="12"
+                              Margin="5,0"/>
+                    <TextBlock Text="Коммерческое подразделение"
+                    Padding="0,15,0,0"   
+                              Foreground="#666666"
+                              FontSize="11"/>
                 </StackPanel>
             </Border>
         </StackPanel>

@@ -1,8 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using RTC.ViewModels;
-using RTC.Views;
+using System;
 
 namespace RTC
 {
@@ -10,24 +9,46 @@ namespace RTC
     {
         public override void Initialize()
         {
-            AvaloniaXamlLoader.Load(this);
-            #if DEBUG
-
-    this.AttachDevTools();
-#endif
+            try
+            {
+                Console.WriteLine("Инициализация приложения...");
+                AvaloniaXamlLoader.Load(this);
+                Console.WriteLine("XAML загружен успешно");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка инициализации: {ex}");
+                throw;
+            }
         }
 
         public override void OnFrameworkInitializationCompleted()
         {
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            try
             {
-                desktop.MainWindow = new Views.MainWindow()
+                Console.WriteLine("Инициализация фреймворка завершена...");
+                
+                if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                 {
-                    DataContext = new MainWindowViewModel(),
-                };
-            }
+                    Console.WriteLine("Создание главного окна...");
+                    desktop.MainWindow = new Views.MainWindow();
+                    Console.WriteLine("Главное окно создано");
+                    
+                    // Обработка закрытия приложения
+                    desktop.Exit += (sender, e) => 
+                    {
+                        Console.WriteLine("Приложение завершено");
+                    };
+                }
 
-            base.OnFrameworkInitializationCompleted();
+                base.OnFrameworkInitializationCompleted();
+                Console.WriteLine("Базовая инициализация завершена");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка создания окна: {ex}");
+                throw;
+            }
         }
     }
 }
