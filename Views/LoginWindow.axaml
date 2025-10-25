@@ -1,0 +1,110 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:RTC.ViewModels"
+             xmlns:converters="clr-namespace:RTC.Converters"
+             x:Class="RTC.Views.LoginView"
+             x:DataType="vm:AuthViewModel"
+             Background="Transparent">
+    
+    <Design.DataContext>
+        <vm:AuthViewModel/>
+    </Design.DataContext>
+
+    <Grid Background="#f8f9fa" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Width="400" 
+                Background="White" 
+                BorderBrush="#dee2e6" 
+                BorderThickness="1" 
+                CornerRadius="10" 
+                Padding="40">
+            <StackPanel Spacing="20">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="🔐" 
+                              FontSize="32" 
+                              HorizontalAlignment="Center"
+                              Margin="0,0,0,10"/>
+                    <TextBlock Text="RTC - Анализатор проектов" 
+                              FontSize="20" 
+                              FontWeight="Bold" 
+                              HorizontalAlignment="Center"
+                              Foreground="#2c3e50"/>
+                    <TextBlock Text="Вход в систему" 
+                              FontSize="16" 
+                              Foreground="#7f8c8d"
+                              HorizontalAlignment="Center"/>
+                </StackPanel>
+                
+                <StackPanel Spacing="15">
+                    <TextBlock Text="Имя пользователя:" 
+                              Margin="0,0,0,5"
+                              Foreground="#2c3e50"/>
+                    <TextBox Text="{Binding Username}"
+                            Watermark="Введите имя пользователя"
+                            Height="40"
+                            FontSize="14"
+                            Padding="12"/>
+                    
+                    <TextBlock Text="Пароль:" 
+                              Margin="0,0,0,5"
+                              Foreground="#2c3e50"/>
+                    <TextBox Text="{Binding Password}"
+                            PasswordChar="•"
+                            Watermark="Введите пароль"
+                            Height="40"
+                            FontSize="14"
+                            Padding="12"/>
+                    
+                    <Button Content="Войти" 
+                            Command="{Binding LoginCommand}"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Height="44"
+                            Background="#3498db"
+                            Foreground="White"
+                            FontSize="14"
+                            FontWeight="SemiBold"
+                            BorderThickness="0"
+                            CornerRadius="6"
+                            Margin="0,10,0,0"/>
+                </StackPanel>
+                
+                <!-- Сообщение об ошибке -->
+                <Border Background="#f8d7da" 
+                        CornerRadius="6" 
+                        Padding="12"
+                        IsVisible="{Binding Error, Converter={x:Static converters:IsNotNullOrEmptyConverter.Instance}}">
+                    <TextBlock Text="{Binding Error}" 
+                              Foreground="#721c24"
+                              FontSize="13"
+                              TextWrapping="Wrap"/>
+                </Border>
+
+                <!-- Тестовые учетные данные -->
+                <Border Background="#e8f4f8" 
+                        BorderBrush="#b8daff"
+                        BorderThickness="1"
+                        CornerRadius="6" 
+                        Padding="12"
+                        Margin="0,10,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Тестовые учетные данные:" 
+                                  FontWeight="SemiBold" 
+                                  FontSize="12"
+                                  Foreground="#17a2b8"
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="admin / admin - Администратор" 
+                                  FontSize="11"
+                                  Foreground="#6c757d"/>
+                        <TextBlock Text="analyst / analyst - Аналитик" 
+                                  FontSize="11"
+                                  Foreground="#6c757d"/>
+                        <TextBlock Text="user / user - Пользователь" 
+                                  FontSize="11"
+                                  Foreground="#6c757d"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

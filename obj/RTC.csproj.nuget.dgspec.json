@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\RTC\\RTC.csproj": {}
+    "/home/roman/apps/RTC/RTC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\RTC\\RTC.csproj": {
+    "/home/roman/apps/RTC/RTC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\RTC\\RTC.csproj",
+        "projectUniqueName": "/home/roman/apps/RTC/RTC.csproj",
         "projectName": "RTC",
-        "projectPath": "C:\\Users\\Admin\\RTC\\RTC.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\RTC\\obj\\",
+        "projectPath": "/home/roman/apps/RTC/RTC.csproj",
+        "packagesPath": "/home/roman/.nuget/packages/",
+        "outputPath": "/home/roman/apps/RTC/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/roman/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -60,17 +61,21 @@
               "target": "Package",
               "version": "[11.3.8, )"
             },
-            "Avalonia.ReactiveUI": {
-              "target": "Package",
-              "version": "[11.3.8, )"
-            },
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.3.8, )"
             },
             "ReactiveUI": {
               "target": "Package",
-              "version": "[22.2.1, )"
+              "version": "[19.5.41, )"
+            },
+            "ReactiveUI.Avalonia": {
+              "target": "Package",
+              "version": "[14.7.1, )"
+            },
+            "System.Reactive": {
+              "target": "Package",
+              "version": "[6.0.1, )"
             }
           },
           "imports": [
@@ -89,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.111/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
