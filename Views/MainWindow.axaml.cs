@@ -15,15 +15,15 @@ namespace RTC.Views
         private void CreateProjectButton_Click(object sender, RoutedEventArgs e)
         {
             // Открываем окно создания проекта
-            var createProjectWindow = new CreateProject();
-            createProjectWindow.Show();
+            var createProject = new CreateProject();
+            createProject.Show();
             this.Close(); // Закрываем текущее окно, если нужно
         }
 
         private void CreateAccountButton_Click(object sender, RoutedEventArgs e)
 {
-    var createUserWindow = new CreateUserWindow();
-    createUserWindow.Show();
+    var createUser = new CreateUser();
+    createUser.Show();
     this.Close();
 }
 
