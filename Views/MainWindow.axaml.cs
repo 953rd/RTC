@@ -2,6 +2,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
+using Avalonia.Media;
+using System.Collections.Generic;
 
 namespace RTC.Views
 {
@@ -10,7 +12,29 @@ namespace RTC.Views
         public MainWindow()
         {
             InitializeComponent();
+            InitializeChart();
+
         }
+    
+
+private void InitializeChart()
+{
+    var chartItems = new List<ChartItem>
+    {
+        new ChartItem { Label = "Инициация", Value = 12, Color = Color.Parse("#7700FF") },
+        new ChartItem { Label = "Анализ", Value = 8, Color = Color.Parse("#9B30FF") },
+        new ChartItem { Label = "Планирование", Value = 15, Color = Color.Parse("#FF4F12") },
+        new ChartItem { Label = "Дизайн", Value = 10, Color = Color.Parse("#FF6A33") },
+        new ChartItem { Label = "Разработка", Value = 25, Color = Color.Parse("#00a650") },
+        new ChartItem { Label = "Тестирование", Value = 18, Color = Color.Parse("#00C853") },
+        new ChartItem { Label = "Внедрение", Value = 14, Color = Color.Parse("#FFD700") },
+        new ChartItem { Label = "Контроль", Value = 9, Color = Color.Parse("#FFEE58") },
+        new ChartItem { Label = "Поддержка", Value = 11, Color = Color.Parse("#8A33FF") },
+        new ChartItem { Label = "Завершение", Value = 6, Color = Color.Parse("#A366FF") }
+    };
+
+    ProjectStagesChart.Items = chartItems;
+}
 
         private void CreateProjectButton_Click(object sender, RoutedEventArgs e)
         {
