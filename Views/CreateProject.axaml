@@ -5,123 +5,135 @@
         WindowState="Maximized"
         CanResize="True"
         Width="1200" Height="800"
-        Background="#f8f9fa"
-        x:DataType="vm:CreateProjectViewModel">
+        Background="#f8f9fa">
     
-    <Design.DataContext>
-        <vm:CreateProjectViewModel />
-    </Design.DataContext>
+    <ScrollViewer Padding="20">
+        <StackPanel Spacing="20">
+            <!-- Header -->
+            <Border Background="#7700FF" Padding="20" CornerRadius="10">
+                <TextBlock Text="Создание нового проекта" 
+                          Foreground="White" 
+                          FontSize="24" 
+                          FontWeight="Bold"
+                          HorizontalAlignment="Center"/>
+            </Border>
 
-    <Grid RowDefinitions="Auto,*,Auto">
-        <!-- Header -->
-        <Border Grid.Row="0" Background="#7700FF" Padding="20">
-            <TextBlock Text="Создание нового проекта" 
-                      Foreground="White" 
-                      FontSize="24" 
-                      FontWeight="Bold"
-                      HorizontalAlignment="Center"/>
-        </Border>
-
-        <ScrollViewer Grid.Row="1" Padding="20">
-            <StackPanel Spacing="20">
-                <Border Background="White" CornerRadius="12" Padding="25" BorderThickness="1" BorderBrush="#E3E8EC">
-                    <ScrollViewer>
-                        <StackPanel Spacing="15">
-                            <Grid ColumnDefinitions="*,*,*,*" 
-                                  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
-                                  Margin="0,0,0,20">
+            <!-- Форма создания проекта -->
+            <Border Background="White" CornerRadius="12" Padding="25" BorderThickness="1" BorderBrush="#E3E8EC">
+                <ScrollViewer>
+                    <StackPanel Spacing="15">
+                        <Grid ColumnDefinitions="*,*,*,*" 
+                              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+                              Margin="0,0,0,20">
+                            
+                            <!-- Строка 1: Название проекта и Статус -->
+                            <TextBlock Grid.Row="0" Grid.Column="0" Foreground="#333333" Text="Название проекта" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10,5"
+                                     Watermark="Введите название проекта"/>                   
+                            <TextBlock Grid.Row="0" Grid.Column="2" Foreground="#333333" Text="Статус" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <ComboBox Grid.Row="0" Grid.Column="3" Margin="10,5" FontSize="14"
+                                      SelectedIndex="0">
+                                <ComboBoxItem>Выберите статус</ComboBoxItem>
+                                <ComboBoxItem>Планирование</ComboBoxItem>
+                                <ComboBoxItem>В работе</ComboBoxItem>
+                                <ComboBoxItem>Завершен</ComboBoxItem>
+                                <ComboBoxItem>Приостановлен</ComboBoxItem>
+                            </ComboBox>
+                            
+                            <!-- Строка 2: Описание -->
+                            <TextBlock Grid.Row="1" Grid.Column="0" Foreground="#333333" Text="Описание" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Margin="10,5"
+                                     Watermark="Введите описание проекта"
+                                     AcceptsReturn="True"
+                                     Height="60"
+                                     TextWrapping="Wrap"/>
+                            
+                            <!-- Строка 3: Менеджер и Отдел -->
+                            <TextBlock Grid.Row="2" Grid.Column="0" Foreground="#333333" Text="Менеджер" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Margin="10,5"
+                                     Watermark="ФИО менеджера"/>                   
+                            <TextBlock Grid.Row="2" Grid.Column="2" Foreground="#333333" Text="Отдел" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <ComboBox Grid.Row="2" Grid.Column="3" Margin="10,5"
+                                      SelectedIndex="0">
+                                <ComboBoxItem>Выберите отдел</ComboBoxItem>
+                                <ComboBoxItem>Коммерческий отдел</ComboBoxItem>
+                                <ComboBoxItem>Технический отдел</ComboBoxItem>
+                                <ComboBoxItem>Отдел разработки</ComboBoxItem>
+                                <ComboBoxItem>Отдел маркетинга</ComboBoxItem>
+                            </ComboBox>
+                            
+                            <!-- Строка 4: Бюджет и Срок -->
+                            <TextBlock Grid.Row="3" Grid.Column="0" Foreground="#333333" Text="Бюджет" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10,5"
+                                     Watermark="0.00 руб"/>                   
+                            <TextBlock Grid.Row="3" Grid.Column="2" Foreground="#333333" Text="Срок" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <DatePicker Grid.Row="3" Grid.Column="3" Margin="10,5" FontSize="14"/>
+                            
+                            <!-- Строка 5: Приоритет и Риск -->
+                            <TextBlock Grid.Row="4" Grid.Column="0" Foreground="#333333" Text="Приоритет" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <ComboBox Grid.Row="4" Grid.Column="1" Margin="10,5"
+                                      SelectedIndex="0">
+                                <ComboBoxItem>Выберите приоритет</ComboBoxItem>
+                                <ComboBoxItem>Высокий</ComboBoxItem>
+                                <ComboBoxItem>Средний</ComboBoxItem>
+                                <ComboBoxItem>Низкий</ComboBoxItem>
+                            </ComboBox>                 
+                            <TextBlock Grid.Row="4" Grid.Column="2" Foreground="#333333" Text="Уровень риска" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <ComboBox Grid.Row="4" Grid.Column="3" Margin="10,5"
+                                      SelectedIndex="0">
+                                <ComboBoxItem>Выберите риск</ComboBoxItem>
+                                <ComboBoxItem>Высокий</ComboBoxItem>
+                                <ComboBoxItem>Средний</ComboBoxItem>
+                                <ComboBoxItem>Низкий</ComboBoxItem>
+                            </ComboBox>
+                            
+                            <!-- Строка 6: Прогресс и Дата завершения -->
+                            <TextBlock Grid.Row="5" Grid.Column="0" Foreground="#333333" Text="Прогресс" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="10,5">
+                                <TextBox Watermark="0" Width="60"/>
+                                <TextBlock Text="%" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                            </StackPanel>                 
+                            <TextBlock Grid.Row="5" Grid.Column="2" Foreground="#333333" Text="Дата завершения" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <DatePicker Grid.Row="5" Grid.Column="3" Margin="10,5" FontSize="14"/>
+                            
+                            <!-- Строка 7: Теги проекта -->
+                            <TextBlock Grid.Row="6" Grid.Column="0" Foreground="#333333" Text="Теги проекта" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,5"
+                                     Watermark="Введите теги через запятую"/>
+                            
+                            <!-- Строка 8: Комментарии -->
+                            <TextBlock Grid.Row="7" Grid.Column="0" Foreground="#333333" Text="Комментарии" VerticalAlignment="Top" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
+                            <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,5"
+                                     AcceptsReturn="True" 
+                                     TextWrapping="Wrap" 
+                                     Height="80"
+                                     Watermark="Дополнительные комментарии..."/>
+                            
+                            <!-- Пустая строка для отступа -->
+                            <Border Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" Height="20"/>
+                            
+                            <!-- Кнопки -->
+                            <StackPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="4" 
+                                        Orientation="Horizontal" Spacing="15" 
+                                        HorizontalAlignment="Center" Margin="0,20">
+                                <Button Background="Transparent" BorderThickness="0" Padding="0"
+                                        Click="CancelButton_Click">
+                                    <Border Background="#FF4F12" CornerRadius="8" Padding="30,15">
+                                        <TextBlock Text="Отмена" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
+                                    </Border>
+                                </Button>
                                 
-                                <!-- Строка 1: Название проекта и Статус -->
-                                <TextBlock Grid.Row="0" Grid.Column="0" Foreground="#333333" Text="Название проекта" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Grid.Row="0" Grid.Column="1" Margin="10,5"
-                                         Text="{Binding ProjectName}"/>                   
-                                <TextBlock Grid.Row="0" Grid.Column="2" Foreground="#333333" Text="Статус" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <ComboBox Grid.Row="0" Grid.Column="3" Margin="10,5" FontSize="14"/>
-                                
-                                <!-- Строка 2: Описание -->
-                                <TextBlock Grid.Row="1" Grid.Column="0" Foreground="#333333" Text="Описание" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Margin="10,5"
-                                         Text="{Binding ProjectDescription}"/>
-                                
-                                <!-- Строка 3: Менеджер и Отдел -->
-                                <TextBlock Grid.Row="2" Grid.Column="0" Foreground="#333333" Text="Менеджер" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Margin="10,5"/>                   
-                                <TextBlock Grid.Row="2" Grid.Column="2" Foreground="#333333" Text="Отдел" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Grid.Row="2" Grid.Column="3" Margin="10,5"/>
-                                
-                                <!-- Строка 4: Бюджет и Срок -->
-                                <TextBlock Grid.Row="3" Grid.Column="0" Foreground="#333333" Text="Бюджет" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" Margin="10,5"/>                   
-                                <TextBlock Grid.Row="3" Grid.Column="2" Foreground="#333333" Text="Срок" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <ComboBox Grid.Row="3" Grid.Column="3" Margin="10,5" FontSize="14"
-                                          ItemsSource="{Binding YourItems}"
-                                          SelectedItem="{Binding SelectedMonth}"/>
-                                
-                                <!-- Строка 5: Заголовки -->
-                                <TextBlock Grid.Row="4" Grid.Column="0" Foreground="#333333" Text="Приоритет" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>                 
-                                <TextBlock Grid.Row="4" Grid.Column="1" Foreground="#333333" Text="Риск" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBlock Grid.Row="4" Grid.Column="2" Foreground="#333333" Text="Прогресс" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>                 
-                                <TextBlock Grid.Row="4" Grid.Column="3" Foreground="#333333" Text="Завершение" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                
-                                <!-- Строка 6: Данные -->
-                                <TextBlock Grid.Row="5" Grid.Column="1" Foreground="#333333" Text="Уровень риска" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Grid.Row="5" Grid.Column="2" Margin="10,5"/>
-                                <ComboBox Grid.Row="5" Grid.Column="3" Margin="10,5" FontSize="14"/>
-
-                                <!-- Строка 7: Данные -->
-                                <TextBlock Grid.Column="1" Grid.Row="6" Foreground="#333333" Text="Binding Title}" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Grid.Column="2" Grid.Row="6" Margin="10,5"/>
-                                <ComboBox Grid.Column="3" Grid.Row="6" Margin="10,5" FontSize="14"/>
-                                
-                                <!-- Динамические элементы -->
-                                <ItemsControl Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" 
-                                              ItemsSource="{Binding YourItems}"
-                                              Margin="0,10,0,0">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate x:DataType="models:FormItem">
-                                            <Grid ColumnDefinitions="*,*,*,*" Margin="0,5">
-                                                <TextBlock Grid.Column="1" Foreground="#333333" Text="{Binding Name}" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                                <TextBox Grid.Column="2" Margin="10,5"/>
-                                                <ComboBox Grid.Column="3" Margin="10,5" FontSize="14"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                
-                                <!-- Комментарии -->
-                                <TextBlock Grid.Row="8" Grid.Column="0" Foreground="#333333" Text="Комментарии" VerticalAlignment="Center" Margin="10,5" FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="4" Margin="10,5"
-                                         AcceptsReturn="True" TextWrapping="Wrap" Height="80"/>
-                                
-                                <!-- Кнопки с использованием Border как обертки -->
-                                <StackPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="4" 
-                                            Orientation="Horizontal" Spacing="15" 
-                                            HorizontalAlignment="Center" Margin="0,20">
-                                    <Button Background="Transparent" BorderThickness="0" Padding="0">
-                                        <Border Background="#FF4F12" CornerRadius="8" Padding="30,15">
-                                            <TextBlock Text="Отмена" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
-                                        </Border>
-                                    </Button>
-                                    
-                                    <Button Background="Transparent" BorderThickness="0" Padding="0">
-                                        <Border Background="#7700FF" CornerRadius="8" Padding="30,15">
-                                            <TextBlock Text="Сохранить" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
-                                        </Border>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
-                    </ScrollViewer>
-                </Border>
-            </StackPanel>
-        </ScrollViewer>
-
-        <!-- Foote r -->
-        <Border Grid.Row="2" Background="#E3E8EC" Padding="15">
-            <TextBlock Text="RTC - Коммерческое подразделение © 2024" 
-                      HorizontalAlignment="Center" 
-                      Foreground="#666666"
-                      FontSize="12"/>
-        </Border>
-    </Grid>
+                                <Button Background="Transparent" BorderThickness="0" Padding="0"
+                                        Click="CreateButton_Click">
+                                    <Border Background="#7700FF" CornerRadius="8" Padding="30,15">
+                                        <TextBlock Text="Создать проект" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
+                                    </Border>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
