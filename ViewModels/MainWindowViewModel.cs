@@ -17,6 +17,7 @@ namespace RTC.ViewModels
         private ObservableCollection<Project> _projects;
         private ObservableCollection<Project> _projectsAtRisk;
 
+
         public MainWindowViewModel()
         {
             _dataService = new DataService();
@@ -25,7 +26,9 @@ namespace RTC.ViewModels
             _projectsAtRisk = new ObservableCollection<Project>();
             _currentMetrics = new ProjectMetrics();
 
+
             InitializeAsync();
+
         }
 
         private async void InitializeAsync()
@@ -62,5 +65,6 @@ namespace RTC.ViewModels
             get => _projectsAtRisk;
             set => this.RaiseAndSetIfChanged(ref _projectsAtRisk, value);
         }
+
     }
 }

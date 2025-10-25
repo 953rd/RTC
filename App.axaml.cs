@@ -11,13 +11,17 @@ namespace RTC
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+            #if DEBUG
+
+    this.AttachDevTools();
+#endif
         }
 
         public override void OnFrameworkInitializationCompleted()
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new Views.MainWindow()  // Явно указываем namespace
+                desktop.MainWindow = new Views.MainWindow()
                 {
                     DataContext = new MainWindowViewModel(),
                 };

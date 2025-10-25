@@ -12,7 +12,7 @@ namespace RTC.Models
         public int DelayedProjects { get; set; }
         public decimal TotalBudget { get; set; }
         public decimal TotalActualCost { get; set; }
-        public double AverageCompletionRate { get; set; } // Изменено на double
+        public double AverageCompletionRate { get; set; }
         public Dictionary<ProjectPriority, int> ProjectsByPriority { get; set; } = new();
         public Dictionary<ProjectStatus, int> ProjectsByStatus { get; set; } = new();
         

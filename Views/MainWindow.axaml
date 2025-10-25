@@ -12,7 +12,7 @@
     </Design.DataContext>
 
     <Grid RowDefinitions="Auto,*,Auto">
-        <!-- Header -->
+
         <Border Grid.Row="0" Background="#2c3e50" Padding="20">
             <TextBlock Text="RTC - Анализатор коммерческих проектов" 
                       Foreground="White" 
@@ -21,11 +21,10 @@
                       HorizontalAlignment="Center"/>
         </Border>
 
-        <!-- Main Content -->
         <ScrollViewer Grid.Row="1" Padding="20">
             <StackPanel Spacing="20">
-                <!-- Metrics Overview -->
-                <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto" Margin="0,0,0,20">
+
+                <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto" Margin="0,0,0,0">
                     <Border Grid.Column="0" Background="#3498db" CornerRadius="10" Padding="15" Margin="5">
                         <StackPanel>
                             <TextBlock Text="Всего проектов" Foreground="White" FontSize="14"/>
@@ -59,8 +58,7 @@
                     </Border>
                 </Grid>
 
-                <!-- Projects at Risk -->
-                <Border Background="#fff3cd" CornerRadius="10" Padding="15">
+                <Border Background="#201e16" CornerRadius="10" Padding="15">
                     <StackPanel>
                         <TextBlock Text="⚠️ Проекты в зоне риска" 
                                   FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>

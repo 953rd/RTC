@@ -1,0 +1,102 @@
+<Window x:Class="RTC.Views.CreateProject"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RTC.ViewModels"
+        xmlns:models="using:RTC.Models"
+        Title="RTC - Анализатор коммерческих проектов"
+        Width="1200" Height="800"
+        x:DataType="vm:CreateProjectViewModel">
+    
+    <Design.DataContext>
+        <vm:CreateProjectViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2c3e50" Padding="20">
+            <TextBlock Text="RTC - Анализатор коммерческих проектов" 
+                      Foreground="White" 
+                      FontSize="24" 
+                      FontWeight="Bold"
+                      HorizontalAlignment="Center"/>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" Padding="20">
+            <StackPanel Spacing="20">
+                <Border Background="#fff" CornerRadius="35" Padding="45">
+                    <ScrollViewer>
+                        <StackPanel Spacing="10">
+                            <Grid ColumnDefinitions="*,*,*,*" 
+                                  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,40,40" 
+                                  Margin="5,5,5,20">
+                                
+                                <TextBlock Grid.Row="0" Grid.Column="0" Foreground="Black" Text="Название проекта" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Row="0" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#ae00cd"
+                                         Text="{Binding ProjectName}"/>                   
+                                <TextBlock Grid.Row="0" Grid.Column="2" Foreground="Black" Text="Статус" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <ComboBox Grid.Row="0" Grid.Column="3" Margin="30,10" FontSize="14"/>
+                                
+                                <TextBlock Grid.Row="1" Grid.Column="0" Foreground="Black" Text="Описание" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="White" VerticalAlignment="Center" Margin="30,10" BorderBrush="#ae00cd"
+                                         Text="{Binding ProjectDescription}"/>
+                                
+                                <TextBlock Grid.Row="2" Grid.Column="0" Foreground="Black" Text="Менеджер" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>                   
+                                <TextBlock Grid.Row="2" Grid.Column="2" Foreground="Black" Text="Отдел" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Row="2" Grid.Column="3" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>
+                                
+                                <TextBlock Grid.Row="3" Grid.Column="0" Foreground="Black" Text="Бюджет" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>                   
+                                <TextBlock Grid.Row="3" Grid.Column="2" Foreground="Black" Text="Срок" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <ComboBox Grid.Row="3" Grid.Column="3" Margin="30,10" FontSize="14"
+                                          ItemsSource="{Binding YourItems}"
+                                          SelectedItem="{Binding SelectedMonth}"/>
+                                
+                                <TextBlock Grid.Row="4" Grid.Column="0" Foreground="Black" Text="Приоритет" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>                 
+                                <TextBlock Grid.Row="4" Grid.Column="1" Foreground="Black" Text="Риск" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Row="4" Grid.Column="2" Foreground="Black" Text="Прогресс" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>                 
+                                <TextBlock Grid.Row="4" Grid.Column="3" Foreground="Black" Text="Завершение" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                
+                                <TextBlock Grid.Row="5" Grid.Column="1" Foreground="Black" Text="Уровень риска" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Row="5" Grid.Column="2" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>
+                                <ComboBox Grid.Row="5" Grid.Column="3" Margin="30,10" FontSize="14"/>
+
+                                <TextBlock Grid.Column="1" Grid.Row="6" Foreground="Black" Text="Binding Title}" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="6" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>
+                                <ComboBox Grid.Column="3" Grid.Row="6" Margin="30,10" FontSize="14"/>
+                                
+                                <ItemsControl Grid.Row="7" Grid.RowSpan="11" Grid.Column="0" Grid.ColumnSpan="4" 
+                                              ItemsSource="{Binding YourItems}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate x:DataType="models:FormItem">
+                                            <Grid ColumnDefinitions="*,*,*,*" Margin="0,5">
+                                                <TextBlock Grid.Column="1" Foreground="Black" Text="{Binding Name}" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                                <TextBox Grid.Column="2" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>
+                                                <ComboBox Grid.Column="3" Margin="30,10" FontSize="14"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                
+                                <TextBlock Grid.Row="19" Grid.Column="0" Foreground="Black" Text="Комментарии" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                
+                                <TextBox Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="4" Background="White" Margin="30,10" BorderBrush="#ae00cd"
+                                         AcceptsReturn="True" TextWrapping="Wrap" Height="80"/>
+                                
+                                <Button Grid.Row="21" Grid.RowSpan="22" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,10" Content="Отмена" Background="#e65c00" Foreground="White"/>
+                                <Button Grid.Row="21" Grid.RowSpan="22" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,10" Content="Сохранить" Background="#ae00cd" Foreground="White"/>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Footer -->
+        <Border Grid.Row="2" Background="#ecf0f1" Padding="10">
+            <TextBlock Text="RTC - Коммерческое подразделение © 2024" 
+                      HorizontalAlignment="Center" 
+                      Foreground="#7f8c8d"/>
+        </Border>
+    </Grid>
+</Window>
