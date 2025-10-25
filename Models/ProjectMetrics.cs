@@ -5,6 +5,9 @@ namespace RTC.Models
 {
     public class ProjectMetrics
     {
+        public int ActiveProjects { get; set; }
+        public decimal TotalProfit { get; set; }
+        public decimal Profitability { get; set; }
         public DateTime Period { get; set; }
         public int TotalProjects { get; set; }
         public int CompletedProjects { get; set; }
