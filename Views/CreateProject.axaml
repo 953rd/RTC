@@ -1,90 +1,221 @@
 <Window x:Class="RTC.Views.CreateProject"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:RTC.ViewModels"
-        xmlns:models="using:RTC.Models"
-        Title="RTC - Анализатор коммерческих проектов"
+        Title="RTC - Создание проекта"
         Width="1200" Height="800"
-        x:DataType="vm:CreateProjectViewModel">
-    
-    <Design.DataContext>
-        <vm:CreateProjectViewModel />
-    </Design.DataContext>
+        Background="#f8f9fa">
 
     <Grid RowDefinitions="Auto,*,Auto">
-        <!-- Header -->
-        <Border Grid.Row="0" Background="#2c3e50" Padding="20">
-            <TextBlock Text="RTC - Анализатор коммерческих проектов" 
-                      Foreground="White" 
-                      FontSize="24" 
-                      FontWeight="Bold"
-                      HorizontalAlignment="Center"/>
-        </Border>
+    <!-- Заголовок с кнопками -->
+            <Border CornerRadius="12" Padding="20">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#7700FF" Offset="0"/>
+                        <GradientStop Color="#E8D2ED" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid ColumnDefinitions="*,Auto,Auto" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                        <TextBlock Text="📊 Анализатор коммерческих проектов" 
+                                  Foreground="#7700FF" 
+                                  FontSize="24" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="Rostelecom Business - Панель управления проектами" 
+                                  Foreground="#666666" 
+                                  FontSize="14" 
+                                  HorizontalAlignment="Center"
+                                  Margin="0,6,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- Кнопки управления -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10">
+                    <Button Content="← Назад" 
+                            Background="#749FD6" 
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            FontSize="12"
+                            Padding="14,8"
+                            CornerRadius="6"
+                            Click="BackButton_Click"/>
+                </StackPanel>
+                </Grid>
+            </Border>
 
         <ScrollViewer Grid.Row="1" Padding="20">
             <StackPanel Spacing="20">
                 <Border Background="#fff" CornerRadius="35" Padding="45">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <ScrollViewer>
                         <StackPanel Spacing="10">
                             <Grid ColumnDefinitions="*,*,*,*" 
                                   RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,40,40" 
                                   Margin="5,5,5,20">
                                 
+                                <!-- Строка 0 -->
                                 <TextBlock Grid.Row="0" Grid.Column="0" Foreground="Black" Text="Название проекта" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <TextBox Grid.Row="0" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#ae00cd"
-                                         Text="{Binding ProjectName}"/>                   
+                                <TextBox Grid.Row="0" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>                   
                                 <TextBlock Grid.Row="0" Grid.Column="2" Foreground="Black" Text="Статус" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <ComboBox Grid.Row="0" Grid.Column="3" Margin="30,10" FontSize="14"/>
+                                <ComboBox Grid.Row="0" Grid.Column="3" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
                                 
+                                <!-- Строка 1 -->
                                 <TextBlock Grid.Row="1" Grid.Column="0" Foreground="Black" Text="Описание" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="White" VerticalAlignment="Center" Margin="30,10" BorderBrush="#ae00cd"
-                                         Text="{Binding ProjectDescription}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="White" VerticalAlignment="Center" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13" Height="60" AcceptsReturn="True" TextWrapping="Wrap"/>
                                 
+                                <!-- Строка 2 -->
                                 <TextBlock Grid.Row="2" Grid.Column="0" Foreground="Black" Text="Менеджер" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>                   
+                                <TextBox Grid.Row="2" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>                   
                                 <TextBlock Grid.Row="2" Grid.Column="2" Foreground="Black" Text="Отдел" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <TextBox Grid.Row="2" Grid.Column="3" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>
+                                <TextBox Grid.Row="2" Grid.Column="3" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
                                 
+                                <!-- Строка 3 -->
                                 <TextBlock Grid.Row="3" Grid.Column="0" Foreground="Black" Text="Бюджет" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>                   
+                                <TextBox Grid.Row="3" Grid.Column="1" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>                   
                                 <TextBlock Grid.Row="3" Grid.Column="2" Foreground="Black" Text="Срок" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <ComboBox Grid.Row="3" Grid.Column="3" Margin="30,10" FontSize="14"
-                                          ItemsSource="{Binding YourItems}"
-                                          SelectedItem="{Binding SelectedMonth}"/>
+                                <ComboBox Grid.Row="3" Grid.Column="3" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
                                 
+                                <!-- Строка 4 -->
                                 <TextBlock Grid.Row="4" Grid.Column="0" Foreground="Black" Text="Приоритет" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>                 
                                 <TextBlock Grid.Row="4" Grid.Column="1" Foreground="Black" Text="Риск" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
                                 <TextBlock Grid.Row="4" Grid.Column="2" Foreground="Black" Text="Прогресс" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>                 
                                 <TextBlock Grid.Row="4" Grid.Column="3" Foreground="Black" Text="Завершение" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
                                 
+                                <!-- Строка 5 -->
+                                <TextBlock Grid.Row="5" Grid.Column="0" Foreground="Black" Text="Приоритет" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
                                 <TextBlock Grid.Row="5" Grid.Column="1" Foreground="Black" Text="Уровень риска" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <TextBox Grid.Row="5" Grid.Column="2" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>
-                                <ComboBox Grid.Row="5" Grid.Column="3" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Row="5" Grid.Column="2" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Row="5" Grid.Column="3" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
 
-                                <TextBlock Grid.Column="1" Grid.Row="6" Foreground="Black" Text="Binding Title}" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                <TextBox Grid.Column="2" Grid.Row="6" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>
-                                <ComboBox Grid.Column="3" Grid.Row="6" Margin="30,10" FontSize="14"/>
+                                <!-- Строка 6 -->
+                                <TextBlock Grid.Column="0" Grid.Row="6" Foreground="Black" Text="Категория" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="6" Foreground="Black" Text="Название параметра" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="6" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="6" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
                                 
-                                <ItemsControl Grid.Row="7" Grid.RowSpan="11" Grid.Column="0" Grid.ColumnSpan="4" 
-                                              ItemsSource="{Binding YourItems}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate x:DataType="models:FormItem">
-                                            <Grid ColumnDefinitions="*,*,*,*" Margin="0,5">
-                                                <TextBlock Grid.Column="1" Foreground="Black" Text="{Binding Name}" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
-                                                <TextBox Grid.Column="2" Background="White" Margin="30,10" BorderBrush="#ae00cd"/>
-                                                <ComboBox Grid.Column="3" Margin="30,10" FontSize="14"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                <!-- Строка 7 -->
+                                <TextBlock Grid.Column="0" Grid.Row="7" Foreground="Black" Text="Технологии" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="7" Foreground="Black" Text="Используемые технологии" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="7" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="7" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
                                 
+                                <!-- Строка 8 -->
+                                <TextBlock Grid.Column="0" Grid.Row="8" Foreground="Black" Text="Команда" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="8" Foreground="Black" Text="Состав команды" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="8" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="8" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 9 -->
+                                <TextBlock Grid.Column="0" Grid.Row="9" Foreground="Black" Text="Ресурсы" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="9" Foreground="Black" Text="Необходимые ресурсы" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="9" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="9" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 10 -->
+                                <TextBlock Grid.Column="0" Grid.Row="10" Foreground="Black" Text="Клиент" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="10" Foreground="Black" Text="Информация о клиенте" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="10" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="10" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 11 -->
+                                <TextBlock Grid.Column="0" Grid.Row="11" Foreground="Black" Text="Конкуренты" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="11" Foreground="Black" Text="Анализ конкурентов" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="11" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="11" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 12 -->
+                                <TextBlock Grid.Column="0" Grid.Row="12" Foreground="Black" Text="Рынок" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="12" Foreground="Black" Text="Анализ рынка" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="12" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="12" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 13 -->
+                                <TextBlock Grid.Column="0" Grid.Row="13" Foreground="Black" Text="Маркетинг" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="13" Foreground="Black" Text="Маркетинговая стратегия" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="13" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="13" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 14 -->
+                                <TextBlock Grid.Column="0" Grid.Row="14" Foreground="Black" Text="Финансы" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="14" Foreground="Black" Text="Финансовый план" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="14" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="14" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 15 -->
+                                <TextBlock Grid.Column="0" Grid.Row="15" Foreground="Black" Text="Юридические аспекты" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="15" Foreground="Black" Text="Юридические вопросы" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="15" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="15" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 16 -->
+                                <TextBlock Grid.Column="0" Grid.Row="16" Foreground="Black" Text="Риски" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="16" Foreground="Black" Text="Потенциальные риски" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="16" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="16" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 17 -->
+                                <TextBlock Grid.Column="0" Grid.Row="17" Foreground="Black" Text="KPI" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="17" Foreground="Black" Text="Ключевые показатели" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="17" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="17" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 18 -->
+                                <TextBlock Grid.Column="0" Grid.Row="18" Foreground="Black" Text="Отчетность" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBlock Grid.Column="1" Grid.Row="18" Foreground="Black" Text="Периодичность отчетов" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
+                                <TextBox Grid.Column="2" Grid.Row="18" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"/>
+                                <ComboBox Grid.Column="3" Grid.Row="18" Margin="30,10" FontSize="13"
+                                         BorderThickness="1" BorderBrush="#E8D2ED" CornerRadius="6" Padding="10" Background="White"/>
+                                
+                                <!-- Строка 19 -->
                                 <TextBlock Grid.Row="19" Grid.Column="0" Foreground="Black" Text="Комментарии" VerticalAlignment="Center" Margin="30,10" FontSize="14"/>
                                 
-                                <TextBox Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="4" Background="White" Margin="30,10" BorderBrush="#ae00cd"
+                                <!-- Строка 20 -->
+                                <TextBox Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="4" Background="White" Margin="30,10" BorderBrush="#7700FF"
+                                         BorderThickness="1" CornerRadius="6" Padding="10" FontSize="13"
                                          AcceptsReturn="True" TextWrapping="Wrap" Height="80"/>
                                 
-                                <Button Grid.Row="21" Grid.RowSpan="22" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,10" Content="Отмена" Background="#e65c00" Foreground="White"/>
-                                <Button Grid.Row="21" Grid.RowSpan="22" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,10" Content="Сохранить" Background="#ae00cd" Foreground="White"/>
+                                <!-- Строка 21 - Кнопки -->
+                                <Button Grid.Row="21" Grid.RowSpan="22" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,10" Content="Отмена" Background="#749FD6" Foreground="White"
+                                       FontWeight="SemiBold" FontSize="13" CornerRadius="6" Click="CancelButton_Click"/>
+                                <Button Grid.Row="21" Grid.RowSpan="22" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,10" Content="Сохранить" Background="#7700FF" Foreground="White"
+                                       FontWeight="SemiBold" FontSize="13" CornerRadius="6" Click="SaveButton_Click"/>
                             </Grid>
                         </StackPanel>
                     </ScrollViewer>
@@ -94,9 +225,32 @@
 
         <!-- Footer -->
         <Border Grid.Row="2" Background="#ecf0f1" Padding="10">
-            <TextBlock Text="RTC - Коммерческое подразделение © 2024" 
-                      HorizontalAlignment="Center" 
-                      Foreground="#7f8c8d"/>
+            <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FFFFFF" Offset="0"/>
+                        <GradientStop Color="#F8F0FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                    <Image Source="/Assets/rostelecom-logo-eng.png" 
+       Width="120" 
+       Height="30" 
+       Stretch="Uniform"/>
+                    <TextBlock Text="Business - Анализатор проектов"
+                            Padding="0,15,0,0" 
+                              Foreground="#7700FF"
+                              FontSize="12"
+                              FontWeight="SemiBold"/>
+                    <TextBlock Text="•" 
+                    Padding="0,15,0,0" 
+                              Foreground="#E8D2ED"
+                              FontSize="12"
+                              Margin="5,0"/>
+                    <TextBlock Text="Коммерческое подразделение"
+                    Padding="0,15,0,0"   
+                              Foreground="#666666"
+                              FontSize="11"/>
+                </StackPanel>
         </Border>
     </Grid>
 </Window>
