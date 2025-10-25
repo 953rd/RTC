@@ -11,17 +11,34 @@ namespace RTC.Views
             InitializeComponent();
         }
 
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Реализовать логику создания проекта
+            // Возврат на главное окно
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Возврат на главное окно
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Логика сохранения проекта
+            // Временно показываем сообщение и возвращаемся на главную
             var dialog = new Window()
             {
-                Title = "Создание проекта",
-                Width = 300,
-                Height = 150,
-                Content = new TextBlock
-                {
-                    Text = "Проект успешно создан!",
+                Title = "Сохранение проекта",
+                Width = 400,
+                Height = 200,
+                Content = new TextBlock 
+                { 
+                    Text = "Проект успешно сохранен!", 
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
                 }
@@ -31,15 +48,7 @@ namespace RTC.Views
             // Возврат на главное окно
             var mainWindow = new MainWindow();
             mainWindow.Show();
-            Close();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Возврат на главное окно
-            var mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
+            this.Close();
         }
     }
 }

@@ -7,19 +7,87 @@
         Width="1200" Height="800"
         Background="#f8f9fa">
 
+    <Window.Styles>
+        <!-- Style для оранжевых кнопок -->
+        <Style Selector="Button.OrangeButton">
+            <Setter Property="Background" Value="#FF4F12"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="14,8"/>
+            <Setter Property="Template">
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter Name="contentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <!-- Style для фиолетовых кнопок -->
+        <Style Selector="Button.PurpleButton">
+            <Setter Property="Background" Value="#7700FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="14,8"/>
+            <Setter Property="Template">
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter Name="contentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <!-- Стили для состояний оранжевых кнопок -->
+        <Style Selector="Button.OrangeButton:pointerover">
+            <Setter Property="Background" Value="#FF6A33"/>
+        </Style>
+
+        <Style Selector="Button.OrangeButton:pressed">
+            <Setter Property="Background" Value="#E3460F"/>
+        </Style>
+
+        <!-- Стили для состояний фиолетовых кнопок -->
+        <Style Selector="Button.PurpleButton:pointerover">
+            <Setter Property="Background" Value="#8A33FF"/>
+        </Style>
+
+        <Style Selector="Button.PurpleButton:pressed">
+            <Setter Property="Background" Value="#6600CC"/>
+        </Style>
+    </Window.Styles>
+
     <Grid RowDefinitions="Auto,*,Auto">
         <!-- Header -->
         <Border Grid.Row="0" Padding="20">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                     <GradientStop Color="#7700FF" Offset="0"/>
-                    <GradientStop Color="#E8D2ED" Offset="1"/>
+                    <GradientStop Color="#E3E8EC" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
             <Grid ColumnDefinitions="*,Auto,Auto" VerticalAlignment="Center">
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
                     <TextBlock Text="👤 Создание пользователя" 
-                              Foreground="#7700FF" 
+                              Foreground="#FF4F12" 
                               FontSize="24" 
                               FontWeight="Bold"/>
                     <TextBlock Text="Rostelecom Business - Административная панель" 
@@ -32,12 +100,9 @@
                 <!-- Кнопки управления -->
                 <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10">
                     <Button Content="← Назад" 
-                            Background="#749FD6" 
-                            Foreground="White"
+                            Classes="OrangeButton"
                             FontWeight="SemiBold"
                             FontSize="12"
-                            Padding="14,8"
-                            CornerRadius="6"
                             Click="BackButton_Click"/>
                 </StackPanel>
             </Grid>
@@ -50,11 +115,11 @@
                         CornerRadius="16" 
                         Padding="40"
                         BorderThickness="1"
-                        BorderBrush="#E8D2ED">
+                        BorderBrush="#E3E8EC">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#FFFFFF" Offset="0"/>
-                            <GradientStop Color="#F8F0FF" Offset="1"/>
+                            <GradientStop Color="#F5F7F9" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
                     
@@ -73,7 +138,7 @@
                         <TextBox Grid.Row="0" Grid.Column="1"
                                 Background="White"
                                 BorderThickness="1"
-                                BorderBrush="#7700FF"
+                                BorderBrush="#FF4F12"
                                 CornerRadius="6"
                                 Padding="12"
                                 FontSize="13"/>
@@ -89,7 +154,7 @@
                         <TextBox Grid.Row="1" Grid.Column="1"
                                 Background="White"
                                 BorderThickness="1"
-                                BorderBrush="#7700FF"
+                                BorderBrush="#FF4F12"
                                 CornerRadius="6"
                                 Padding="12"
                                 FontSize="13"/>
@@ -105,7 +170,7 @@
                         <TextBox Grid.Row="2" Grid.Column="1"
                                 Background="White"
                                 BorderThickness="1"
-                                BorderBrush="#7700FF"
+                                BorderBrush="#FF4F12"
                                 CornerRadius="6"
                                 Padding="12"
                                 FontSize="13"/>
@@ -121,7 +186,7 @@
                         <TextBox Grid.Row="3" Grid.Column="1"
                                 Background="White"
                                 BorderThickness="1"
-                                BorderBrush="#7700FF"
+                                BorderBrush="#FF4F12"
                                 CornerRadius="6"
                                 Padding="12"
                                 FontSize="13"/>
@@ -137,7 +202,7 @@
                         <TextBox Grid.Row="4" Grid.Column="1"
                                 Background="White"
                                 BorderThickness="1"
-                                BorderBrush="#7700FF"
+                                BorderBrush="#FF4F12"
                                 CornerRadius="6"
                                 Padding="12"
                                 FontSize="13"
@@ -154,7 +219,7 @@
                         <TextBox Grid.Row="5" Grid.Column="1"
                                 Background="White"
                                 BorderThickness="1"
-                                BorderBrush="#7700FF"
+                                BorderBrush="#FF4F12"
                                 CornerRadius="6"
                                 Padding="12"
                                 FontSize="13"
@@ -170,7 +235,7 @@
                                   Margin="0,0,20,0"/>
                         <ComboBox Grid.Row="6" Grid.Column="1"
                                  BorderThickness="1"
-                                 BorderBrush="#E8D2ED"
+                                 BorderBrush="#E3E8EC"
                                  CornerRadius="6"
                                  Padding="12"
                                  FontSize="13"
@@ -183,27 +248,31 @@
                         
                         <!-- Кнопки -->
                         <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
-                                   Orientation="Horizontal" 
-                                   HorizontalAlignment="Center"
-                                   Spacing="20"
-                                   Margin="0,30,0,0">
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Center"
+                                Spacing="20"
+                                Margin="0,30,0,0">
                             <Button Content="Отмена" 
-                                    Background="#749FD6" 
-                                    Foreground="White"
+                                    Classes="OrangeButton"
                                     FontWeight="SemiBold"
                                     FontSize="13"
-                                    Padding="25,12"
+                                    Padding="30,12"
                                     CornerRadius="6"
-                                    Width="140"
+                                    Width="150"
+                                    Height="42"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
                                     Click="CancelButton_Click"/>
                             <Button Content="Создать пользователя" 
-                                    Background="#7700FF" 
-                                    Foreground="White"
+                                    Classes="PurpleButton"
                                     FontWeight="SemiBold"
                                     FontSize="13"
-                                    Padding="25,12"
+                                    Padding="30,12"
                                     CornerRadius="6"
-                                    Width="180"
+                                    Width="210"
+                                    Height="42"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
                                     Click="CreateUserButton_Click"/>
                         </StackPanel>
                     </Grid>
@@ -214,10 +283,10 @@
                         CornerRadius="10"
                         Padding="20"
                         BorderThickness="1"
-                        BorderBrush="#E8D2ED">
+                        BorderBrush="#E3E8EC">
                     <StackPanel Spacing="8">
                         <TextBlock Text="💡 Информация"
-                                  Foreground="#7700FF"
+                                  Foreground="#FF4F12"
                                   FontSize="14"
                                   FontWeight="Bold"/>
                         <TextBlock Text="• Поля помеченные * обязательны для заполнения"
@@ -239,7 +308,7 @@
             <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FFFFFF" Offset="0"/>
-                        <GradientStop Color="#F8F0FF" Offset="1"/>
+                        <GradientStop Color="#F5F7F9" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="10">
@@ -249,12 +318,12 @@
        Stretch="Uniform"/>
                     <TextBlock Text="Business - Анализатор проектов"
                             Padding="0,15,0,0" 
-                              Foreground="#7700FF"
+                              Foreground="#FF4F12"
                               FontSize="12"
                               FontWeight="SemiBold"/>
                     <TextBlock Text="•" 
                     Padding="0,15,0,0" 
-                              Foreground="#E8D2ED"
+                              Foreground="#E3E8EC"
                               FontSize="12"
                               Margin="5,0"/>
                     <TextBlock Text="Коммерческое подразделение"
